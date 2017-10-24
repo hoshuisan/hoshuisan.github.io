@@ -91,7 +91,9 @@
 <meta property="og:image" content="http://img1.gtimg.com/15/1550/155002/15500288_980x1200_0.jpg">
 <meta property="og:image" content="http://img1.gtimg.com/15/1550/155002/15500292_980x1200_0.jpg">
 <meta property="og:image" content="http://img1.gtimg.com/15/1550/155002/15500293_980x1200_0.jpg">
-<meta property="og:updated_time" content="2017-10-20T07:15:42.000Z">
+<meta property="og:image" content="https://www.nicoleboom.com/data/product/20171014wechat/bottom.jpg">
+<meta property="og:image" content="https://www.nicoleboom.com/data/product/20171014wechat/top.png">
+<meta property="og:updated_time" content="2017-10-24T08:31:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信WeChat的产品分析">
 <meta name="twitter:description" content="这是我的第一次产品分析报告，分析的对象是微信。选择微信的理由很简单，因为它已经融入了我的生活，是我每天一定会使用的app，我对它的体验较深。">
@@ -105,7 +107,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -329,12 +331,12 @@
 <ol>
 <li><p><strong>微信功能</strong></p>
 <blockquote>
-<p>社交通讯: 即时通讯、微信群、朋友圈、附近的人、表情包及表情开放平台<br>娱乐内容: 公众号平台、游戏、小程序、看一看、搜一搜、购物<br>生活服务: 钱包、公众号平台的服务号、卡包<br>其他功能: 聊天内容收藏、聊天记录备份、账号与安全</p>
+<p>社交通讯: 即时通讯、微信群、朋友圈、附近的人、表情包及表情开放平台<br>娱乐内容: 公众号平台、游戏、小程序、看一看、搜一搜、购物<br>生活服务: 钱包、公众号平台的服务号、卡包<br>其他功能: 聊天内容收藏、聊天记录备份、账号与安全、小程序功能</p>
 </blockquote>
 </li>
 <li><p><strong>业务需求分析</strong></p>
 <blockquote>
-<p>核心需求: 语音、文字、图像、视频、位置、表情包的即时通讯功能，即时分享功能，群聊功能，朋友圈分享功能，联系人一键导入功能。<br>附加需求: 资讯订阅功能（公众号），移动支付转账功能，扫码功能，生活服务功能。</p>
+<p>核心需求: 语音、文字、图像、视频、位置、表情包的即时通讯功能，即时分享功能，群聊功能，朋友圈分享功能，联系人一键导入功能。<br>附加需求: 资讯订阅功能（公众号），移动支付转账功能，扫码功能，生活服务功能，搜一搜功能，看一看功能，小程序功能。</p>
 </blockquote>
 </li>
 <li><p><strong>对业务需求的目标、目的和用户行为进行分析。</strong></p>
@@ -412,11 +414,34 @@
 </ul>
 </blockquote>
 </li>
+<li>搜一搜功能<blockquote>
+<ul>
+<li><strong>业务需求</strong><br>&emsp; &emsp;用户搜索微信生态圈中的内容（朋友圈内容、公众号文章资讯、表情包等）</li>
+<li><strong>业务目的</strong><br>&emsp; &emsp;将微信生态圈的内容资讯形成一个闭环，增加用户的使用时间，增强用户粘性，抢占搜索市场</li>
+<li><strong>用户行为</strong><br>&emsp; &emsp;搜索表情包、朋友圈、资讯、音乐、公众号文章、微信读书上的小说</li>
+</ul>
+</blockquote>
+</li>
+<li>看一看功能<blockquote>
+<ul>
+<li><strong>业务需求</strong><br>&emsp; &emsp;根据用户标签将公众号文章推送给用户，以Feed流的方式呈现。</li>
+<li><strong>业务目的</strong><br>&emsp; &emsp;增强用户粘性，抢占基于数据挖掘的资讯产品。</li>
+<li><strong>用户行为</strong><br>&emsp; &emsp;点击看一看功能，弹出feed流文章标题，用户点击文章标题阅读全文。</li>
+</ul>
+</blockquote>
+</li>
+<li>小程序功能<blockquote>
+<ul>
+<li><strong>业务需求</strong><br>&emsp; &emsp;为用户提供微信官方和其他开发者的优秀小程序。</li>
+<li><strong>业务目的</strong><br>&emsp; &emsp;为用户和开发者提供小程序平台。</li>
+<li><strong>用户行为</strong><br>&emsp; &emsp;用户通过搜索或曾用列表进入小程序，使用小程序提供的服务。</li>
+</ul>
+</blockquote>
+</li>
 </ol>
 </blockquote>
 </li>
-<li><p><strong>目标用户和使用场景</strong></p>
-<blockquote>
+<li><strong>目标用户和使用场景</strong><blockquote>
 <p>&emsp; &emsp;企鹅智库2016年3月发布的<a href="http://tech.qq.com/a/20160321/007049.htm#p=1" target="_blank" rel="external">《“微信”影响力报告》</a>的数据显示</p>
 <ul>
 <li>微信中男性用户比例居多，占67.5%<br><img src="http://img1.gtimg.com/15/1550/155002/15500287_980x1200_0.jpg" alt="微信用户性别分布" title="微信用户性别分布"></li>
@@ -425,13 +450,36 @@
 <li>微信功能使用率第一位是朋友圈功能（浏览或发布），其次是收发信息、公众号。与支付相关的微信红包／转账与微信支付，排名第四，支付的用户规模化和使用习惯培养接近完成。<br><img src="http://img1.gtimg.com/15/1550/155002/15500293_980x1200_0.jpg" alt="微信功能使用率" title="微信功能使用率"><br><strong>根据以上资料，我推测目标用户特征为</strong></li>
 <li>18-35岁的大学生、职员和自由职业者为主，男性居多。</li>
 <li>日常生活依赖微信，空闲时间较多，渴望关注，对好友的“生活信息流”好奇。</li>
-<li>关注热点，有互联网产品使用经验，能接受使用新功能。<br>&emsp; &emsp;<strong>用户使用场景一：</strong></li>
+<li>关注热点，有互联网产品使用经验，能接受使用新功能。<br><strong>用户使用场景：</strong><blockquote>
+<ul>
+<li><strong>用户画像</strong><blockquote>
+<ul>
+<li>姓名：小红</li>
+<li>性别：女</li>
+<li>年龄：25</li>
+<li>职业：企业职员</li>
+<li>收入：7k</li>
+<li>设备：iPhone 7</li>
+<li>爱好：购物，看电视剧，上网。</li>
+</ul>
+</blockquote>
+</li>
+<li><strong>场景</strong><blockquote>
+<p>&emsp; &emsp;早上8点，小红关掉手机的闹钟，在床上赖床的同时打开微信看看有没有新的消息，然后刷刷朋友圈。起床洗漱好之后，小红穿好衣服出门上班。到小区门口，小红进了全家便利店，用微信支付购买了一份早餐。小红上班的地点离家比较远，因此小红会在地铁上看看公众号的文章或者看看视频。到公司后小红开始了她的工作。11点半，经过一个半小时的紧张工作后，小红去了一下厕所，顺便刷了一下微信朋友圈和回复了一下微信。12点，小红在公司的群聊中邀请同事一起吃午饭。在餐厅，小张说她的微信有餐厅的优惠券，大家都由小张先付全额，小张再通过群收款收回大家的饭钱。下午三点，公司的群聊有人发出下午茶的小程序投票单，小红点进去，选了自己想吃的下午茶餐。下午六点半，小红下班途中再刷刷朋友圈，看到好友分享到朋友圈的外卖红包，小红领取了红包，然后在微信上为自己叫了晚饭。</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</li>
 </ul>
 </blockquote>
 </li>
 </ol>
 </blockquote>
-
+<h1 id="产品分析"><a href="#产品分析" class="headerlink" title="产品分析"></a>产品分析</h1><h2 id="产品结构"><a href="#产品结构" class="headerlink" title="产品结构"></a>产品结构</h2><blockquote>
+<p><img src="https://www.nicoleboom.com/data/product/20171014wechat/bottom.jpg" alt="微信结构图" title="微信结构图"><br><img src="https://www.nicoleboom.com/data/product/20171014wechat/top.png" alt="微信结构图" title="微信结构图"></p>
+</blockquote>
+<h2 id="主要功能流程图"><a href="#主要功能流程图" class="headerlink" title="主要功能流程图"></a>主要功能流程图</h2><h2 id="主要功能体验"><a href="#主要功能体验" class="headerlink" title="主要功能体验"></a>主要功能体验</h2>
       
     </div>
     
@@ -576,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#产品概述"><span class="nav-number">1.</span> <span class="nav-text">产品概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产品体验环境"><span class="nav-number">1.0.1.</span> <span class="nav-text">产品体验环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品简介"><span class="nav-number">1.0.2.</span> <span class="nav-text">产品简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品定位"><span class="nav-number">1.0.3.</span> <span class="nav-text">产品定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户需求分析"><span class="nav-number">1.0.4.</span> <span class="nav-text">用户需求分析</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#产品概述"><span class="nav-number">1.</span> <span class="nav-text">产品概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产品体验环境"><span class="nav-number">1.0.1.</span> <span class="nav-text">产品体验环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品简介"><span class="nav-number">1.0.2.</span> <span class="nav-text">产品简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品定位"><span class="nav-number">1.0.3.</span> <span class="nav-text">产品定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户需求分析"><span class="nav-number">1.0.4.</span> <span class="nav-text">用户需求分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产品分析"><span class="nav-number">2.</span> <span class="nav-text">产品分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#产品结构"><span class="nav-number">2.1.</span> <span class="nav-text">产品结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要功能流程图"><span class="nav-number">2.2.</span> <span class="nav-text">主要功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要功能体验"><span class="nav-number">2.3.</span> <span class="nav-text">主要功能体验</span></a></li></ol></li></ol></div>
             
 
           </div>
