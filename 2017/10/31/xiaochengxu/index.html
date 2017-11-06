@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品分析,微信小程序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="微信小程序已经上线10个月，在这十个月中微信小程序已经更新至1.01版本。我也从6月份开始一直制作微信小程序，至今已经成功上线了两款小程序，这篇文章主要说一说我自己对微信小程序的理解和看法，如果有一些错误的地方，欢迎大家批评指导。">
+<meta name="keywords" content="产品分析,微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈微信小程序">
+<meta property="og:url" content="http://yoursite.com/2017/10/31/xiaochengxu/index.html">
+<meta property="og:site_name" content="Horizon">
+<meta property="og:description" content="微信小程序已经上线10个月，在这十个月中微信小程序已经更新至1.01版本。我也从6月份开始一直制作微信小程序，至今已经成功上线了两款小程序，这篇文章主要说一说我自己对微信小程序的理解和看法，如果有一些错误的地方，欢迎大家批评指导。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-06T10:35:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈微信小程序">
+<meta name="twitter:description" content="微信小程序已经上线10个月，在这十个月中微信小程序已经更新至1.01版本。我也从6月份开始一直制作微信小程序，至今已经成功上线了两款小程序，这篇文章主要说一说我自己对微信小程序的理解和看法，如果有一些错误的地方，欢迎大家批评指导。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/31/xiaochengxu/"/>
+
+
+
+
+
+  <title>浅谈微信小程序 | Horizon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Horizon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/xiaochengxu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何瑞燊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Horizon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈微信小程序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T14:32:12+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>微信小程序已经上线10个月，在这十个月中微信小程序已经更新至1.01版本。我也从6月份开始一直制作微信小程序，至今已经成功上线了两款小程序，这篇文章主要说一说我自己对微信小程序的理解和看法，如果有一些错误的地方，欢迎大家批评指导。<br><a id="more"></a></p>
+<h1 id="一、小程序概述"><a href="#一、小程序概述" class="headerlink" title="一、小程序概述"></a>一、小程序概述</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><p>微信官方对小程序的定义是——一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。而张小龙先生对微信小程序是这样描述的—— “小程序是一种不需要下载安装即可使用的应用，体现了用完即走的理念。微信是个工具，是个非常宏大的目标”。微信官方将微信小程序定位为体验比网页好，比下载App更便捷，具有无需安装、触手可及、用完即走、无需卸载四个特性的软件。</p>
+<h2 id="2-流量入口"><a href="#2-流量入口" class="headerlink" title="2.流量入口"></a>2.流量入口</h2><h3 id="1-搜索"><a href="#1-搜索" class="headerlink" title="(1).搜索"></a>(1).搜索</h3><p>用户直接在小程序页面搜索关键词，或者在“搜一搜”功能中搜索关键词。这个入口并不是目前小程序的重要入口。由于小程序和“搜一搜”的普及度不高，比较少用户会通过搜索进入小程序。</p>
+<h3 id="2-微信公众号"><a href="#2-微信公众号" class="headerlink" title="(2).微信公众号"></a>(2).微信公众号</h3><p>微信公众号是微信生态最重要的组成部分。一个公众号能绑定50个微信小程序，许多公众号也已经悄悄绑定了自己的小程序。用户能通过微信公众号的菜单、文章、介绍页面进入小程序。</p>
+<h3 id="3-用户分享"><a href="#3-用户分享" class="headerlink" title="(3).用户分享"></a>(3).用户分享</h3><p>用户分享能分为两种方式。第一种是用户直接将小程序分享到会话页面，这是微信官方允许的，在小程序功能中能轻松实现。第二种是开发者钻一下微信的漏洞，为用户生成小程序的二维码供用户保存，以便用户分享到朋友圈。由于小程序并没有分享到朋友圈的功能，因此用户并不能直接分享到朋友圈。但是朋友圈爆款是小程序获取流量的重要手段之一，许多社交类小程序就使用了二维码分享的方法，引导用户保存二维码并将二维码分享到朋友圈。</p>
+<h3 id="4-附近的小程序"><a href="#4-附近的小程序" class="headerlink" title="(4).附近的小程序"></a>(4).附近的小程序</h3><p>根据地理位置在小程序页面推荐小程序，这个入口主要以进入线下门店小程序为主，让小程序更好地服务线下门店。</p>
+<h2 id="3-功能"><a href="#3-功能" class="headerlink" title="3.功能"></a>3.功能</h2><p>我这里所说的小程序的功能是指微信对小程序的设计、开发、运营的规定下小程序所能实现的能力。小程序的能力由微信官方设计，但是特定小程序的功能却是由开发者们制作的。小程序的发展决定于小程序对开发者的开放程度。目前小程序能实现发起／接受网络请求；小程序分享；支付；实时通信；调用系统工具比如相机、录音、手机通讯录、读取／保存文件、读取／保存图片、播放音乐／视频、蓝牙等手机相关功能；地理位置定位等功能。同时最新更新了小程序承载网页的功能，能在小程序中直接打开网页，也能从网页中直接回到小程序中。小程序调用手机功能的能力已经相当完善了，手机技术中比较新的生物识别功能也可以在小程序中进行调用，但是小程序与微信生态的相关功能并没有开放给开发者们。小程序并不能向公众号文章一样分享到朋友圈，也不能从小程序回到公众号。在我看来，小程序在微信生态圈中属于一个分支，并没有与其他微信生态的功能形成一个闭环。</p>
+<h1 id="二、小程序产品分析"><a href="#二、小程序产品分析" class="headerlink" title="二、小程序产品分析"></a>二、小程序产品分析</h1><h2 id="1-小程序-社交"><a href="#1-小程序-社交" class="headerlink" title="1.小程序+社交"></a>1.小程序+社交</h2><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><h4 id="群印象"><a href="#群印象" class="headerlink" title="群印象"></a>群印象</h4><ul>
+<li>主要功能：自己设置好友印象，分享给好友，邀请好友选择对自己的印象，达到社交功能。</li>
+</ul>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><ul>
+<li>群印象通过生成用户专用二维码引导用户将小程序分享到朋友圈，达到了朋友圈爆款的效果，但是由于微信官方不允许小程序分享到朋友圈，因此微信很快将群印象进行了封禁。随着小程序分享到微信群的功能开放，小程序对分享功能的开放也会逐渐提高，但是我认为微信本身就是一个社交软件，小程序+社交只能成为朋友圈的爆款，并不能长期运营。</li>
+</ul>
+<h2 id="2-小程序-线下"><a href="#2-小程序-线下" class="headerlink" title="2.小程序+线下"></a>2.小程序+线下</h2><h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><h4 id="肯德基"><a href="#肯德基" class="headerlink" title="肯德基+"></a>肯德基+</h4><ul>
+<li>主要功能：点餐、领取优惠券、使用积分</li>
+</ul>
+<h3 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h3><ul>
+<li>微信通过小程序打通了微信支付与b端的连接，让中小企业能通过微信小程序实现点餐，收款等功能。我认为小程序将来发展一个很重要的方向就是连接线下商户。在线下场景中，小程序有着极大提高用户体验的空间，它能提高商户的服务质量，降低人力成本，如手机点餐、支付，也能提高顾客的用户体验，节省时间，如未到店就能点餐支付。o2o是永恒不变的话题，而小程序能为微信支付打通o2o的桥梁。</li>
+</ul>
+<h2 id="3-小程序-电商"><a href="#3-小程序-电商" class="headerlink" title="3.小程序+电商"></a>3.小程序+电商</h2><h3 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h3><h4 id="VogueMINI"><a href="#VogueMINI" class="headerlink" title="VogueMINI+"></a>VogueMINI+</h4><ul>
+<li>主要功能：在优质内容中添加小程序链接，直接进入产品页面，并允许用户购买</li>
+</ul>
+<h3 id="分析：-2"><a href="#分析：-2" class="headerlink" title="分析："></a>分析：</h3><ul>
+<li>优质内容平台+电商平台，方便用户购买。即看即可买的功能也让用户对产品有更深的了解，激发人的购买欲。优质公众号一直以来的变现方式主要是靠广告收入为主，但是小程序+电商能让众多内容制作者增加了变现的方式，也使本已经趋向平稳发展的公众号平台变得活跃。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>小程序对与线下商家、内容制作者具有得天独厚的优势，对于App市场中的低频App产生了巨大的打击。无需安装、无需卸载、触手可及、用完即走的功能使低频app们更加难以生存。小程序的未来发展我个人认为是向线下、电商和低频App中的高频功能整合发展。</p>
+<h1 id="三、写在最后"><a href="#三、写在最后" class="headerlink" title="三、写在最后"></a>三、写在最后</h1><p>微信小程序作为张小龙对于微信发展所新添加功能，必然有其出现的原因。微信小程序打破了h5页面需要适配不同系统、不同屏幕大小的框架，简便了开发者的开发流程。同时向广大开发者共享微信月活9亿的巨大流量，让小程序开发者们有更多变现、发展的方式。虽然微信小程序并不是新事物，百度等公司也曾经推广过轻应用，但是微信小程序作为移动端的最后一环能很好连接线下，实现o2o，我个人认为微信小程序将是微信支付向线下发展的新开端。而且微信小程序与微信生态的紧密连接也使公众号平台上的优质作者有了更多变现的工具，也使趋于平淡的公众号平台注入新鲜的血液。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品分析/" rel="tag"># 产品分析</a>
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/WeChat/" rel="next" title="产品分析 | 微信">
+                <i class="fa fa-chevron-left"></i> 产品分析 | 微信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">何瑞燊</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、小程序概述"><span class="nav-number">1.</span> <span class="nav-text">一、小程序概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">1.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-流量入口"><span class="nav-number">1.2.</span> <span class="nav-text">2.流量入口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-搜索"><span class="nav-number">1.2.1.</span> <span class="nav-text">(1).搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-微信公众号"><span class="nav-number">1.2.2.</span> <span class="nav-text">(2).微信公众号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用户分享"><span class="nav-number">1.2.3.</span> <span class="nav-text">(3).用户分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-附近的小程序"><span class="nav-number">1.2.4.</span> <span class="nav-text">(4).附近的小程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-功能"><span class="nav-number">1.3.</span> <span class="nav-text">3.功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、小程序产品分析"><span class="nav-number">2.</span> <span class="nav-text">二、小程序产品分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-小程序-社交"><span class="nav-number">2.1.</span> <span class="nav-text">1.小程序+社交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#案例"><span class="nav-number">2.1.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#群印象"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">群印象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析："><span class="nav-number">2.1.2.</span> <span class="nav-text">分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-小程序-线下"><span class="nav-number">2.2.</span> <span class="nav-text">2.小程序+线下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#案例-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#肯德基"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">肯德基+</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析：-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-小程序-电商"><span class="nav-number">2.3.</span> <span class="nav-text">3.小程序+电商</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#案例-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VogueMINI"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">VogueMINI+</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析：-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">分析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、写在最后"><span class="nav-number">3.</span> <span class="nav-text">三、写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何瑞燊</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 提供</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
