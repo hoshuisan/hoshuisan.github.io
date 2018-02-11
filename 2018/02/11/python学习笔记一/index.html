@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在这篇学习笔记中首先对序列做一个概述，接下来主要学习列表和元组这两种比较重要的序列类型的操作。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记一">
+<meta property="og:url" content="http://yoursite.com/2018/02/11/python学习笔记一/index.html">
+<meta property="og:site_name" content="Horizon">
+<meta property="og:description" content="在这篇学习笔记中首先对序列做一个概述，接下来主要学习列表和元组这两种比较重要的序列类型的操作。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-11T23:24:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记一">
+<meta name="twitter:description" content="在这篇学习笔记中首先对序列做一个概述，接下来主要学习列表和元组这两种比较重要的序列类型的操作。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/11/python学习笔记一/"/>
+
+
+
+
+
+  <title>Python学习笔记一 | Horizon</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Horizon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/python学习笔记一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何瑞燊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Horizon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python学习笔记一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T02:01:03+08:00">
+                2018-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在这篇学习笔记中首先对序列做一个概述，接下来主要学习列表和元组这两种比较重要的序列类型的操作。<br><a id="more"></a></p>
+<h1 id="Python序列之列表和元组"><a href="#Python序列之列表和元组" class="headerlink" title="Python序列之列表和元组"></a>Python序列之列表和元组</h1><h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>在Python中，最基本的数据结构是 <strong><em>序列</em></strong> ，序列中的每个元素被分配一个序号——即元素的位置，也称为 <strong><em>索引</em></strong> 。第一个索引是0。Python包含6中内建的序列，最为常用的是 <strong><em>列表</em></strong> 和 <strong><em>元组</em></strong> ，其他的内建序列类型有字符串、Unicode字符串、buffer对象和xrange对象。在这次学习笔记中将学习列表和元组。列表和元组的主要区别在于，列表可以修改，元组则不能。也就是说如果要根据要求来添加元素，那么列表可能会更好用；而出于某些原因，序列不能修改的时候，使用元组则更为合适。一般来说，几乎所有的情况下都可以用列表代替元组。在需要操作一组数值的时候，序列很好用。同时，序列也可以包含其他的序列，因此，构建如下的一个人员信息的列表也是可以的，这个列表就是你的数据库：</p>
+<pre><code>&gt;&gt;&gt; liming = [&apos;李明&apos;, 24]
+&gt;&gt;&gt; xiaohong = [&apos;小红&apos;, 18]
+&gt;&gt;&gt; database = [liming, xiaohong]
+&gt;&gt;&gt; print(database)
+[[&apos;李明&apos;,24],[&apos;小红&apos;,18]]
+</code></pre><p>所有序列类型都可以进行某些特定的操作。这些操作包括： <strong><em>索引</em></strong> 、 <strong><em>分片</em></strong> 、 <strong><em>加</em></strong> 、 <strong><em>乘</em></strong> 以及检查某个元素是否属于序列的成员—— <strong><em>成员资格</em></strong> 。除此之外，Python还有计算序列长度、找出最大元素和最小元素的内建函数。</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>序列中的所有元素都是有编号的——从0开始递增。这些元素可以通过编号分别访问，如下例：</p>
+<pre><code>&gt;&gt;&gt; sequence = &apos;hello&apos;
+&gt;&gt;&gt; sequence[0]
+&apos;h&apos;
+</code></pre><p>所有序列都可以通过这种方式进行索引，使用负数索引时，Python会从右边，也就是从最后1个元素开始计数，最后一个元素的位置编号时-1。</p>
+<p>以下是一个通过索引制作的程序，它要求输入年月日然后打印出相应日期的英文日期：</p>
+<pre><code>&gt;&gt;&gt; months = [
+    &apos;January&apos;,
+    &apos;February&apos;,
+    &apos;March&apos;,
+    &apos;April&apos;,
+    &apos;May&apos;,
+    &apos;June&apos;,
+    &apos;July&apos;,
+    &apos;August&apos;,
+    &apos;September&apos;,
+    &apos;October&apos;,
+    &apos;November&apos;,
+    &apos;December&apos;
+]
+&gt;&gt;&gt; endings = [&apos;st&apos;,&apos;nd&apos;,&apos;rd&apos;] + 17 * [&apos;th&apos;] \
+    + [&apos;st&apos;,&apos;nd&apos;,&apos;rd&apos;] + 7 * [&apos;th&apos;] \
+    + [&apos;st&apos;]
+&gt;&gt;&gt; year = input(&apos;Year: &apos;)
+&gt;&gt;&gt; month = input(&apos;Month(1-12): &apos;)
+&gt;&gt;&gt; day = input(&apos;Day(1-31): &apos;)
+&gt;&gt;&gt; month_number = int(month)
+&gt;&gt;&gt; day_number = int(day)
+&gt;&gt;&gt; month_name = months[month_number-1]
+&gt;&gt;&gt; ordinal = day + endings[day_number-1]
+&gt;&gt;&gt; print(month_name + &apos;&apos; + ordinal + &quot;,&quot;+ year)
+</code></pre><p>以下是程序执行的结果：</p>
+<pre><code>Year: 1989
+Month (1-12): 8
+Day (1-31): 11
+August 11st, 1989
+</code></pre><h2 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h2><p>与使用索引来访问单个元素类似，可以使用 <strong><em>分片</em></strong> 操作来访问一定 <strong><em>范围</em></strong> 内的元素。分片通过冒号隔开的 <strong><em>两个</em></strong> 索引来实现。</p>
+<p>分片操作对于提取序列的一部分是很有用的。而编号在这里显得尤为重要。第1个索引是要提取的第1个元素的编号，而最后的索引则是分片之后剩余部分的第1个元素的编号。</p>
+<p>以下是使用分片提取URL（假设它的形式为<a href="http://www.google.com）的域名的示例程序：" target="_blank" rel="external">http://www.google.com）的域名的示例程序：</a></p>
+<pre><code>&gt;&gt;&gt; url = input(&quot;请输入URL： &quot;)
+&gt;&gt;&gt; output = url[11:-4]
+&gt;&gt;&gt; print(output)
+</code></pre><p>以下是程序执行的结果：</p>
+<pre><code>请输入URL: http://www.google.com
+google
+</code></pre><p>进行分片的时候，分片的开始和结束点需要进行指定。而另外一个参数——步长——通常是隐式设置的。在普通分片中，步长是1——分片操作就是按照这个步长逐个遍历序列的元素，然后返回开始和结束点之间的所有元素。以下的示例中，分片包含了另外一个数字，这个数字就是步长的显式设置。</p>
+<pre><code>&gt;&gt;&gt; numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+&gt;&gt;&gt; numbers[0:10:2]
+[1, 3, 5, 7, 9]
+</code></pre><h2 id="序列相加"><a href="#序列相加" class="headerlink" title="序列相加"></a>序列相加</h2><p>通过使用加运算符可以进行序列的连接操作：</p>
+<pre><code>&gt;&gt;&gt; [1, 2, 3] + [4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+&gt;&gt;&gt; &apos;Hello, &apos; + &apos;world!&apos;
+&apos;Hello, world!&apos;
+</code></pre><p>但是列表和字符串是无法连接在一起的，尽管它们都是序列。即两种相同类型的序列才能进行连接操作。</p>
+<h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p>一个序列乘以数字x会生成新的序列，在新的序列中，原来的序列会被重复x次。</p>
+<pre><code>&gt;&gt;&gt;  &apos;python&apos; * 5
+&apos;pythonpythonpythonpythonpython&apos;
+</code></pre><h2 id="成员资格"><a href="#成员资格" class="headerlink" title="成员资格"></a>成员资格</h2><p>为了检查一个值是否在序列中，可以使用in运算符。这个运算符检查某个条件是否为真，然后返回相应的值，条件为真返回 <strong>True</strong> ，条件为佳返回 <strong>False</strong> 。</p>
+<p>以下是使用in运算符制作的一个检查用户名和密码是否正确的程序：</p>
+<pre><code>&gt;&gt;&gt; database = [
+        [&apos;albert&apos; , &apos;1234&apos;],
+        [&apos;ben&apos; , &apos;2222&apos;],
+        [&apos;sam&apos; , &apos;4444&apos;],
+        [&apos;candy&apos; , &apos;3333&apos;]
+    ]
+&gt;&gt;&gt; username = input(&apos;用户名： &apos;)
+&gt;&gt;&gt; password = input(&apos;密码： &apos;)
+&gt;&gt;&gt; if [username,password] in database:
+         print (&apos;登录成功&apos;)
+    else:
+        print(&apos;用户名或密码错误，登录失败&apos;)
+</code></pre><h2 id="长度、最小值和最大值"><a href="#长度、最小值和最大值" class="headerlink" title="长度、最小值和最大值"></a>长度、最小值和最大值</h2><p>通过内建函数len、min和max可以分别返回序列中所包含元素的数量、最小的元素和最大的元素。</p>
+<pre><code>number = [1,4,10,90]
+#序列长度
+print(len(number))
+4
+#序列最大值
+print(max(number))
+90
+#序列最小值
+print(min(number))
+1
+</code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表可以使用所有适用于序列的标准操作，比如索引、分片、连接、乘法等。以下是一些可以改变列表的方法：元素赋值、元素删除、分片赋值和列表方法。在这些方法中，有一部分方法并非真正地改变列表。</p>
+<ol>
+<li><p>list函数</p>
+<pre><code>因为字符串不能像列表一样被修改，所以有时根据字符串创建列表会很有用。list函数可以实现这个操作。
+
+    &gt;&gt;&gt; list(&apos;hello&apos;)
+    [&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;]
+</code></pre></li>
+</ol>
+<ol>
+<li><p>元素赋值<br> 元素赋值是使用索引标记来为某个特定的，位置明确的元素赋值。</p>
+<pre><code>&gt;&gt;&gt; x = [1, 1, 1]
+&gt;&gt;&gt; x[1] = 2
+&gt;&gt;&gt; x
+[1, 2, 1]
+</code></pre></li>
+</ol>
+<ol>
+<li><p>删除元素<br> 使用del语句可以实现从列表中删除元素。</p>
+<pre><code>&gt;&gt;&gt; list2 = [1, 2, 3, 4]
+&gt;&gt;&gt; del list2[2]
+&gt;&gt;&gt; print(list2)
+[1, 2, 4]
+</code></pre></li>
+</ol>
+<ol>
+<li><p>分片赋值</p>
+<p> 分片赋值可以一次为多个元素赋值，还可以使用与原序列长度不同的序列将分片替换：</p>
+<pre><code>&gt;&gt;&gt; name = list(&apos;funny&apos;)
+&gt;&gt;&gt; print(name)
+&gt;&gt;&gt; name[3:] = list(&apos;ction&apos;)
+&gt;&gt;&gt; print(name)
+&apos;function&apos;
+</code></pre><p> 分片赋值语句还可以在不需要替换任何原有元素的情况下插入新的元素：</p>
+<pre><code>&gt;&gt;&gt; numbers = [1, 5]
+&gt;&gt;&gt; numbers[1:1] = [2, 3, 4]
+&gt;&gt;&gt; print(numbers)
+[1, 2, 3, 4, 5]
+</code></pre><p> 分片赋值用来删除元素也是可行的：</p>
+<pre><code>&gt;&gt;&gt; numbers = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; numbers[1:4] = []
+&gt;&gt;&gt; print(numbers)
+[1, 5]
+</code></pre></li>
+<li><p>列表方法</p>
+<p> 方法是一个与某些对象有紧密联系的函数，一般来说，方法可以这样进行调用：<br> <strong><em>对象</em></strong>. <strong>_<em>方法</em></strong> (<strong><em>参数</em></strong>)</p>
+<p> 除了对象被放置到方法名之前，并且两者之间用一个点号隔开，方法调用与函数调用很类似。列表提供了几个方法，用于检查活着修改其中的内容。</p>
+<ol>
+<li><p>append</p>
+<p> append方法在列表末尾追加新的对象。</p>
+<pre><code>&gt;&gt;&gt; lst = [1, 2, 3]
+&gt;&gt;&gt; lst.append(4)
+&gt;&gt;&gt; print(lst)
+[1, 2, 3, 4]
+</code></pre></li>
+<li><p>count</p>
+<p> count方法统计某个元素在列表中出现的次数</p>
+<pre><code>&gt;&gt;&gt; print([&apos;to&apos;, &apos;be&apos;, &apos;or&apos;, &apos;to&apos;, &apos;be&apos;, &apos;or&apos;].count(&apos;to&apos;))
+2
+&gt;&gt;&gt; x = [[1, 2], 1, 1, [2, 1, [1, 2]]]
+&gt;&gt;&gt; print(x.count(1))
+2
+&gt;&gt;&gt; print(x.count([1, 2]))
+1
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<pre><code>3. extend
+
+    extend方法在列表末尾一次性追加另一个序列中的多个值，并修改被扩展的序列
+
+        &gt;&gt;&gt; a = [1, 2, 3]
+        &gt;&gt;&gt; b = [4, 5, 6]
+        &gt;&gt;&gt; a.extend(b)
+        print(a)
+        [1, 2, 3, 4, 5, 6]
+
+    这个操作很像连接操作，两者主要的区别在于：extebd方法修改了被扩展的序列，而原始的连接操作则不然，它会返回一个全新的列表。
+
+4. index
+
+    index方法用于从列表中找出某个值第一个匹配项的索引位置
+
+        &gt;&gt;&gt; names = [&apos;andy&apos;, &apos;ben&apos;, &apos;candy&apos;, &apos;ben&apos;, &apos;david&apos;, &apos;edward&apos;, &apos;andy&apos;]
+        &gt;&gt;&gt; ben_index = names.index(&apos;ben&apos;)
+        &gt;&gt;&gt; print(ben_index)
+        1
+
+5. insert
+
+    insert方法用于将对象插入到列表中
+
+        &gt;&gt;&gt; numbers = [1, 2, 3, 4, 5, 6]
+        &gt;&gt;&gt; numbers.insert(3, &apos;four&apos;)
+        &gt;&gt;&gt; print(numbers)
+        [1, 2, 3, &apos;four&apos;, 4, 5, 6]
+
+6. pop
+
+    pop方法会移除列表中的一个元素（默认最后一个）并且返回这个元素的值
+
+        &gt;&gt;&gt; numbers = [1, 2, 3, 4, 5, 6]
+        &gt;&gt;&gt; x = numbers.pop()
+        &gt;&gt;&gt; print(x)
+        6
+        &gt;&gt;&gt; x
+        [1, 2]
+        &gt;&gt;&gt; y = numbers.pop(3)
+        &gt;&gt;&gt; print(y)
+        4
+
+7. remove
+
+    remove方法用于移除列表中某一个值的第一个匹配项，它是一个没有返回值的原位置改变方法，它修改了列表却没有返回值，这与pop方法相反
+
+        &gt;&gt;&gt; numbers = [1, 2, 3, 4, 3, 2, 1]
+        &gt;&gt;&gt; numbers.remove(3)
+        &gt;&gt;&gt; print(numbers)
+        [1, 2, 4, 3, 2, 1]
+
+8. reverse
+
+    reverse方法将列表中的元素反向存放（这个方法也修改了列表但不返回值）
+
+        &gt;&gt;&gt; x = [1, 2, 3]
+        &gt;&gt;&gt; x.reverse()
+        &gt;&gt;&gt; print(x)
+        [3, 2, 1]
+
+9. sort
+
+    sort方法用于在原位置对列表进行排序，意味着改变原来的列表，从而让其中的元素能按一定的顺序排列，而不是简单地返回一个已排序的列表副本。
+
+        &gt;&gt;&gt; numbers = [1, 3, 2, 4, 6, 5]
+        &gt;&gt;&gt; numbers.sort()
+        &gt;&gt;&gt; print(numbers)
+        [1, 2, 3, 4, 5, 6]
+
+
+10. sorted
+
+    sorted方法用于获取已排序的列表副本 这个函数实际上可以用于任何序列，却总是返回一个列表
+
+        &gt;&gt;&gt; x = [4, 6, 2, 1, 7, 9]
+        &gt;&gt;&gt; y = sorted(x)
+        &gt;&gt;&gt; print(x)
+        [4, 6, 2, 1, 7, 9]
+        &gt;&gt;&gt; print(y)
+        [1, 2, 4, 6, 7, 9]
+</code></pre><h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>元组与列表一样，也是一种序列。唯一不同的是元组不能修改。创建元组的语法（逗号很关键）:</p>
+<pre><code>&gt;&gt;&gt; x = (1, 2, 3)
+&gt;&gt;&gt; y = 1, 2, 3
+&gt;&gt;&gt; none = ()
+&gt;&gt;&gt; z = 42,
+&gt;&gt;&gt; print(x)
+(1, 2, 3)
+&gt;&gt;&gt; print(y)
+(1, 2, 3)
+&gt;&gt;&gt; print(z)
+(42,)
+</code></pre><h2 id="元组的操作"><a href="#元组的操作" class="headerlink" title="元组的操作"></a>元组的操作</h2><ol>
+<li><p>tuple函数</p>
+<p> tuple函数的功能是以一个序列作为参数并把它转换为元组，如果参数就是元组，那么该参数就会被原样返回</p>
+<pre><code>&gt;&gt;&gt; x = tuple([1, 2, 3])
+&gt;&gt;&gt; y = tuple(&quot;abc&quot;)
+&gt;&gt;&gt; z = tuple((&apos;a&apos;, &apos;b&apos;, &apos;c&apos;))    
+&gt;&gt;&gt; print(x)
+(1, 2, 3)
+&gt;&gt;&gt; print(y)
+(&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)
+&gt;&gt;&gt; print(z)
+(&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)
+</code></pre></li>
+<li><p>基本元组操作</p>
+<p> 元组其实并不复杂——除了创建元组和访问元组元素之外，也没有太多其他操作，可以参照其他类型的序列来实现：</p>
+<pre><code>&gt;&gt;&gt; x = 1, 2, 3
+&gt;&gt;&gt; print(x[1])
+2
+&gt;&gt;&gt; print(x[1:2])
+(2,)
+</code></pre></li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们在最后回顾一下本笔记最重要的内容。</p>
+<ol>
+<li><strong>序列</strong> 。序列是一种数据结构，它包含的元素都进行了编号。典型的序列包括列表、字符串和元组。其中，列表是可变的，而元组和字符串是不可变的。通过分片操作可以访问序列的一部分，其中分片需要两个索引号来指出分片的起始和结束位置。想改变列表，则要对相应的位置进行赋值，或者使用赋值语句重写整个分片。</li>
+<li><strong>成员资格</strong> 。in运算符可以检查一个值是否存在于序列。对字符串使用in运算符是一种特例，它可以查找子字符串。</li>
+<li><strong>分片</strong> 。分片是操作序列的一个重要操作。分片可以让我们直接访问序列的某一部分元素。通过分片赋值可以为列表实现插入新的元素，替换元素、删除元素。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/xiaochengxu/" rel="next" title="浅谈微信小程序">
+                <i class="fa fa-chevron-left"></i> 浅谈微信小程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">何瑞燊</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python序列之列表和元组"><span class="nav-number">1.</span> <span class="nav-text">Python序列之列表和元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列"><span class="nav-number">1.1.</span> <span class="nav-text">序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分片"><span class="nav-number">1.3.</span> <span class="nav-text">分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相加"><span class="nav-number">1.4.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乘法"><span class="nav-number">1.5.</span> <span class="nav-text">乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员资格"><span class="nav-number">1.6.</span> <span class="nav-text">成员资格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长度、最小值和最大值"><span class="nav-number">1.7.</span> <span class="nav-text">长度、最小值和最大值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">1.8.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组"><span class="nav-number">1.9.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组的操作"><span class="nav-number">1.10.</span> <span class="nav-text">元组的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.11.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何瑞燊</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 提供</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
